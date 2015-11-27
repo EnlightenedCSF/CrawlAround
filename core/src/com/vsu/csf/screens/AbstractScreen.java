@@ -4,7 +4,6 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 /**
@@ -12,11 +11,11 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
  */
 public abstract class AbstractScreen implements Screen {
 
-    private static final int WIDTH = 1000;
-    private static final int HEIGHT = 700;
+    public static final int WIDTH = 1000;
+    public static final int HEIGHT = 700;
 
     protected Game game;
-    protected Batch batch;
+    protected SpriteBatch batch;
 
     public AbstractScreen(Game game) {
         this.game = game;

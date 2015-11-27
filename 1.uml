@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.vsu.csf</OriginalElement>
+  <nodes>
+    <node x="212.0" y="1004.0">com.vsu.csf.views.buttons.PressAction</node>
+    <node x="835.0" y="1004.0">com.vsu.csf.model.Level</node>
+    <node x="397.0" y="1004.0">com.vsu.csf.renderers.LevelRenderer</node>
+    <node x="138.75" y="0.0">com.vsu.csf.screens.AbstractScreen</node>
+    <node x="0.0" y="345.0">com.vsu.csf.screens.MainMenuScreen</node>
+    <node x="703.832135263744" y="656.3681279740812">com.vsu.csf.desktop.DesktopLauncher</node>
+    <node x="561.0" y="1004.0">com.vsu.csf.model.FoodSpawner</node>
+    <node x="721.0" y="1004.0">com.vsu.csf.model.Snake</node>
+    <node x="701.0" y="575.0">com.vsu.csf.IOSLauncher</node>
+    <node x="344.0" y="389.5">com.vsu.csf.screens.GameScreen</node>
+    <node x="15.72198035840836" y="998.5233370456616">com.vsu.csf.CrawlAround</node>
+    <node x="0.0" y="575.0">com.vsu.csf.views.buttons.Button</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.vsu.csf.screens.MainMenuScreen" target="com.vsu.csf.screens.AbstractScreen">
+      <point x="0.0" y="-92.5" />
+      <point x="162.0" y="320.0" />
+      <point x="222.75" y="320.0" />
+      <point x="-84.0" y="147.5" />
+    </edge>
+    <edge source="com.vsu.csf.screens.GameScreen" target="com.vsu.csf.screens.AbstractScreen">
+      <point x="0.0" y="-48.0" />
+      <point x="451.5" y="320.0" />
+      <point x="390.75" y="320.0" />
+      <point x="84.0" y="147.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.8169561621174524" x="616.3202389389492" y="558.5739597043637" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+    <Category>Constructors</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
