@@ -29,7 +29,7 @@ public class MainMenuScreen extends AbstractScreen {
             setAction(new PressAction() {
                 @Override
                 protected void execute() {
-                    Gdx.app.log("", "Fuck you asshole!");
+                    game.setScreen(new GameScreen(game));
                 }
             });
             setPosition((int) SCREEN_CENTER_X - 75, AbstractScreen.HEIGHT - MARGIN_X);
