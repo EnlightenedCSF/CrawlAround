@@ -28,7 +28,7 @@ public class FoodSpawner {
 //        }
     }
 
-    private void spawn() {
+    public void spawn() {
         double t = 2*Math.PI*Math.random();
         double u = Math.random()+Math.random();
         double r;
@@ -39,10 +39,6 @@ public class FoodSpawner {
         r *= foodRadius;
         foodX = (float) (r * Math.cos(t));
         foodY = (float) (r * Math.sin(t));
-    }
-
-    public void eatFood() {
-        spawn();
     }
 
     public float getFoodX() {

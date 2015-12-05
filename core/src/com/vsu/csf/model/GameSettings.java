@@ -13,7 +13,7 @@ public class GameSettings {
     }
     //endregion
 
-    private float snakeSpeed = 100;
+    private float snakeSpeed = 400;
     private float foodSpawnDelay = 5;
 
     public float getSnakeSpeed() {
