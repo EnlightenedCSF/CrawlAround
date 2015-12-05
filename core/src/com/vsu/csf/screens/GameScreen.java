@@ -5,9 +5,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputAdapter;
 import com.vsu.csf.renderers.LevelRenderer;
 
-/**
- * Created by olferuk on 27/11/15.
- */
 public class GameScreen extends AbstractScreen {
 
     private LevelRenderer levelRenderer;

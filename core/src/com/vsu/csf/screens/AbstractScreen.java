@@ -6,9 +6,6 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-/**
- * Created by olferuk on 27/11/15.
- */
 public abstract class AbstractScreen implements Screen {
 
     public static final int WIDTH = 1000;

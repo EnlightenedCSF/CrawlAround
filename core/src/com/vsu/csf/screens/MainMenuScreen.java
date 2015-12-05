@@ -6,9 +6,6 @@ import com.badlogic.gdx.InputAdapter;
 import com.vsu.csf.views.buttons.Button;
 import com.vsu.csf.views.buttons.PressAction;
 
-/**
- * Created by olferuk on 27/11/15.
- */
 public class MainMenuScreen extends AbstractScreen {
 
     float SCREEN_CENTER_X = AbstractScreen.WIDTH / 2;

@@ -6,9 +6,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.vsu.csf.utils.Consts;
 
-/**
- * Created by olferuk on 27/11/15.
- */
+
 public class LevelRenderer implements IRenderer {
 
     float TRIANGLE_SIDE = 50;
