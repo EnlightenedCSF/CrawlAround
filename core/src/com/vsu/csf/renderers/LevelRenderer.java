@@ -4,7 +4,13 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.vsu.csf.model.FoodSpawner;
+import com.vsu.csf.model.Segment;
+import com.vsu.csf.model.Snake;
 import com.vsu.csf.utils.Consts;
+
+import java.util.LinkedList;
 
 
 public class LevelRenderer implements IRenderer {
@@ -12,10 +18,19 @@ public class LevelRenderer implements IRenderer {
     float TRIANGLE_SIDE = 50;
     float MARGIN = 10;
     float MARGIN_TO_CIRCLE = 3;
-    double RADIUS;
+    float SEGMENT_SIZE = 30;
+    float FOOD_RADIUS = 15;
+    float RADIUS, FOOD_SPAWN_RADIUS;
+
+    float CENTER_X, CENTER_Y;
 
     private Sprite marker;
     private Sprite circle;
+    private TextureRegion segment;
+    private TextureRegion food;
+
+    private Snake snake;
+    private FoodSpawner spawner;
 
     public LevelRenderer() {
         marker = new Sprite(new Texture("gfx/tr.png"));
@@ -23,13 +38,48 @@ public class LevelRenderer implements IRenderer {
 
         circle = new Sprite(new Texture("gfx/circle.png"));
         setCircleSizeAndPosition();
+
+        segment = new TextureRegion(new Texture("gfx/segment.png"));
+        food = new TextureRegion(new Texture("gfx/food.png"));
+
+        snake = new Snake();
+        spawner = new FoodSpawner(FOOD_RADIUS);
+
+        CENTER_X = Gdx.graphics.getWidth() / 2.0f;
+        CENTER_Y = Gdx.graphics.getHeight() / 2.0f;
+    }
+
+    @Override
+    public void render(SpriteBatch batch, float delta) {
+        spawner.update(delta);
+        snake.update(delta);
+
+        circle.draw(batch);
+        marker.draw(batch);
+        drawFood(batch);
+        drawSnake(batch);
+    }
+
+    private void drawFood(SpriteBatch batch) {
+        if (!spawner.isFoodSpawned())
+            return;
+
+        batch.draw(food, CENTER_X + spawner.getFoodX() - FOOD_RADIUS/2, CENTER_Y + spawner.getFoodY() - FOOD_RADIUS/2, FOOD_RADIUS, FOOD_RADIUS);
+    }
+
+    private void drawSnake(SpriteBatch batch) {
+        LinkedList<Segment> body = snake.getBody();
+        for (Segment s : body) {
+            batch.draw(segment, CENTER_X + s.getX() - SEGMENT_SIZE/2, CENTER_Y + s.getY() - SEGMENT_SIZE/2, SEGMENT_SIZE, SEGMENT_SIZE);
+        }
     }
 
     private void setCircleSizeAndPosition() {
         float diameter = Gdx.graphics.getHeight() - 2*(MARGIN + marker.getHeight() + MARGIN_TO_CIRCLE);
         circle.setSize(diameter, diameter);
 
-        RADIUS = diameter/2 + MARGIN_TO_CIRCLE + TRIANGLE_SIDE*Math.sqrt(3)/4;
+        RADIUS = (float)(diameter/2 + MARGIN_TO_CIRCLE + TRIANGLE_SIDE*Math.sqrt(3)/4);
+        FOOD_SPAWN_RADIUS *= 0.9;
 
         float x = (Gdx.graphics.getWidth() - diameter)/2;
         float y = (Gdx.graphics.getHeight() - diameter)/2;
@@ -51,9 +101,7 @@ public class LevelRenderer implements IRenderer {
         marker.setRotation(rotation);
     }
 
-    @Override
-    public void render(SpriteBatch batch) {
-        circle.draw(batch);
-        marker.draw(batch);
+    public void updateSnake(float sin, float cos) {
+        snake.updateAngle(sin, cos);
     }
 }

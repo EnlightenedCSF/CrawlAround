@@ -3,6 +3,7 @@ package com.vsu.csf.screens;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputAdapter;
+import com.vsu.csf.model.GameSettings;
 import com.vsu.csf.renderers.LevelRenderer;
 
 public class GameScreen extends AbstractScreen {
@@ -17,6 +18,7 @@ public class GameScreen extends AbstractScreen {
     public void show() {
         super.show();
         levelRenderer = new LevelRenderer();
+        GameSettings.getInstance();
 
         Gdx.gl.glClearColor(1, 1, 1, 1);
 
@@ -26,10 +28,11 @@ public class GameScreen extends AbstractScreen {
                 screenY = Gdx.graphics.getHeight() - screenY;
                 screenX -= Gdx.graphics.getWidth()/2;
                 screenY -= Gdx.graphics.getHeight()/2;
-                double hyp = Math.sqrt(screenX*screenX + screenY*screenY);
-                double sin = screenY / hyp;
-                double cos = screenX / hyp;
+                float hyp = (float) Math.sqrt(screenX*screenX + screenY*screenY);
+                float sin = screenY / hyp;
+                float cos = screenX / hyp;
                 levelRenderer.updateMarkerPos(sin, cos);
+                levelRenderer.updateSnake(sin, cos);
                 return true;
             }
         });
@@ -39,7 +42,7 @@ public class GameScreen extends AbstractScreen {
     public void render(float delta) {
         super.render(delta);
         batch.begin();
-        levelRenderer.render(batch);
+        levelRenderer.render(batch, delta);
         batch.end();
     }
 }
